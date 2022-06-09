@@ -1,0 +1,440 @@
+@import "global.vars.scss";
+* ,*:before, *:after{
+    box-sizing: border-box;
+    font-family: "OpenSans-Regular";
+  }
+body{
+  margin: 0px;
+  justify-items: center;
+  background:url("../img/femida.png") no-repeat fixed ;
+  background-size: 40% auto;
+  background-position: left 100px; 
+}
+.header{
+  position:fixed;
+  z-index:4;
+  background-color:$verylight;
+  top:0px;
+  left:0px;
+  
+  width:100%;
+  height:100px;
+  grid-template-columns: 100px 1fr 350px;
+background-color: $verylight;
+color:$verydark;
+  
+  .header__logotip{
+      
+      // background-image: url("");
+      padding:10px 25px;
+      align-items: center;
+      align-content: center;
+      grid-template-rows:repeat(2,auto) ;
+      grid-row-gap: 0px ;
+      span:nth-child(1){
+                font-size: 14px;
+                
+  }
+      span:nth-child(2){
+                font-size: 36px;
+                
+      }
+    }
+
+  .header_hamburgermenu{
+z-index: 3;
+    border:0px solid purple;
+    justify-content: center;
+    align-content: center;
+    grid-row-gap: 8.5px ;
+    margin:20px;
+    @include br(60px);
+    cursor:pointer;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.1);
+      &:active{
+        background-color:rgba(0, 0, 0, 0.15)
+      }
+    }
+    span{
+      display:block;
+      width:30px;
+      height:2px;
+      background-color: $verydark;
+      @include br(2px);
+    }
+  }
+  .active{
+    &:hover{
+      background-color: rgba(0, 0, 0, 0);
+      &:active{
+        background-color:rgba(0, 0, 0, 0)
+      }
+    }
+    span:nth-child(1){
+     animation: down .5s forwards;
+    }
+    span:nth-child(2){
+      background-color: transparent;
+         }
+         span:nth-child(3){
+          animation: up .5s  forwards;
+        }
+        }
+
+  //////////////////////////////////////
+  .inactive{
+    
+    span:nth-child(1){
+     animation: canceldown .5s forwards;
+    }
+    
+         span:nth-child(3){
+          animation: cancelup .5s  forwards ;
+        }
+        }
+}
+.header__contact{
+  padding:0px 30px ;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: 10px;
+  align-content: center;
+  justify-items: end;
+  div:nth-child(1){
+    position:relative;
+
+&::before{
+  position:absolute;
+  top:0px;
+  left:-30px;
+  content:'';
+  background: url("../img/teldark.png") no-repeat center/contain;
+width: 20px;
+height:20px;
+}
+  };
+  div:nth-child(2){
+    position:relative;
+
+&::before{
+  position:absolute;
+  top:0px;
+  left:-30px;
+  content:'';
+  background: url("../img/adrdark.png") no-repeat center/contain;
+width: 25px;
+height:25px;
+}
+  };
+}
+.navmenu{
+
+  z-index: 2;
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:300px;
+height:100vh;
+overflow-y: auto;
+
+background-color:$light;
+margin-left: -300px;
+padding: 150px 0px 20px 0px;
+
+}
+
+.visible_navmenu{
+  animation: "visibleNavmenu" .5s forwards;
+}
+.unvisible_navmenu{
+  animation: "unvisibleNavmenu" .5s forwards;
+}
+//Выезжающее слева нав меню
+@keyframes visibleNavmenu {
+  0% {
+   margin-left:-300px;
+
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+@keyframes unvisibleNavmenu {
+  0% {
+    margin-left:0px;
+  }
+  100% {
+    margin-left:-300px;
+  }
+}
+//Гамбургер меню в крестик
+@keyframes down{
+  0%{
+  transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(45deg);
+    transform-origin: left center;
+  }
+}
+@keyframes up{
+  0%{
+    transform:rotate(0deg);
+   
+    }
+    100%{
+      transform:rotate(-45deg);
+      
+      transform-origin: left center;
+      
+    }
+}
+@keyframes canceldown{
+  0%{
+  transform:rotate(45deg);
+  transform-origin: left center;
+  }
+  100%{
+    transform:rotate(0deg);
+  }
+}
+@keyframes cancelup{
+  0%{
+    transform:rotate(-45deg);
+    transform-origin: left center;
+    }
+    100%{
+      transform:rotate(0deg);
+    }
+}
+//////////////////////////////////////////////////////////
+//Навигация
+
+//Внутрь nav__link поместили блок для того что-бы псевдоэлемент был под текстом
+.nav__link__content{
+  position:relative;
+  z-index: 2;
+}
+.nav__link{
+  position:relative;
+  margin:0px;//так как в тэге <p>
+  padding:10px 20px;
+  cursor:pointer;
+  color:#fff;
+  font-size: 18px;
+  
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 100%;
+    background-color: $verydark;
+    transition: width .2s ease;  
+    
+
+  }
+  &:hover{
+    background-color: #ffffff40;
+  }
+}
+.active::before{
+  width: 100%;
+}
+///////////
+.main {
+  padding-top:100px;
+padding-bottom: 100px;
+width: 100%;
+min-height:calc(100vh - 100px);
+max-width: 1200px;
+
+grid-template-columns: 60%;
+ justify-content: end;
+.razdel{
+  position:relative;
+  margin-top: 20px;
+  width:100%;
+  padding:20px;
+  
+  opacity: 1;
+  transition: opacity 2s ease;
+  &::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -45px;
+    width: 150px;
+    height: 40px;
+    
+    margin-left: -75px;
+    background: url("../img/endrazdel.png") no-repeat center/contain;
+  }
+}
+.unvisible{
+  opacity:0;
+}
+}
+.content{
+  
+  grid-row-gap: 50px;
+  }
+.listemployees{
+  grid-row-gap: 20px;
+}
+.employee{
+  color:$verydark;
+  position:relative;
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: auto;
+  align-items: center;
+  padding:10px;
+  &::after{
+    position:absolute;
+    content: '';
+    bottom:0px;
+    left:50%;
+    margin-left: -48%;
+    width:96%;
+    height: 1px;
+    background-color: $verylight;
+  }
+ .employee__name .surname{
+  font-size: 20px;
+  
+}
+.employee__name .name{
+  font-size: 14px;
+  
+}
+}
+.service{
+  color:$verydark;
+  font-size: 20px;
+  
+.service__type{
+  margin-bottom: 10px;
+}
+  .service__name{
+    color:#000;
+    font-size: 16px;
+  }
+}
+.razdel__services{
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+
+}
+.contentRazdel{
+  text-align: justify;
+}
+.razdel__faq{
+  .faqs__question{
+    cursor:pointer;
+    position:relative;
+    color:$verydark;
+    padding:10px 40px 10px 10px;
+   &::after{
+    position:absolute;
+     top:10px;
+     right:10px;
+     content:'';
+     background: url("../img/updown.png") no-repeat center/contain;
+width:20px;
+height:20px;
+transition:transform .5s ease;
+   }
+  }
+  .open{
+      &::after{
+       transform: rotate(90deg);
+    }
+   }
+  .faqs__answer{
+    background-color:$verylight;
+    @include br(10px);
+   height:0px;
+   //скрываем всё что не помещается в блоке
+   overflow: hidden;
+  /////////////////////////////////////////
+   opacity:0;
+   transition: all .5s ease;
+   .answer__text{
+     margin:10px;
+   }
+  }
+  
+}
+.footer{
+  display:none;
+  padding:10px;
+  position:fixed;
+  bottom: 0px;
+  left:0px;
+  color:#fff;
+  width:100%;
+  // height:50px;
+  background-color: $verydark;
+}
+//Адаптация
+@media only screen and (max-width: 999px) {
+  
+  body {
+    background: none;
+  }
+ .header{
+  grid-template-columns: 100px 1fr ;
+}  
+.hc{
+  display:none
+}
+  .main{
+    grid-template-columns:100%;
+  }
+  .footer{
+    display:block;
+  }
+  .header__contact{
+    // padding-right: 40px;
+    color: #fff;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2,auto);
+    justify-content: space-between;
+    div:nth-child(1){
+      position:relative;
+  
+  
+  &::before{
+       background: url("../img/tellight.png") no-repeat center/contain;
+width:20px;
+height:20px;
+  }
+};
+    div:nth-child(2){
+  
+  &::before{
+    background: url("../img/adrlight.png") no-repeat center/contain;
+width:20px;
+height:20px;
+}
+  
+    };
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header__contact{
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 10px;
+    align-content: center;
+    justify-items: end;
+  }
+  .header__logotip{
+    span:nth-child(1){
+      display:none;
+    }
+  }
+
+  }

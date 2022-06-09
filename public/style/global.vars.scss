@@ -1,0 +1,28 @@
+$clr:blue;
+$verydark: #363e5a;
+$normal:#4e5769;
+$light:#828b9d;
+$verylight:#d5d8d3;
+
+@font-face {
+    font-family: "OpenSans-Bold";
+    src: url("fonts/OpenSans-Bold.woff");
+  }
+  @font-face {
+    font-family: "OpenSans-Regular";
+    src: url("fonts/OpenSans-Regular.woff");
+  }
+  @font-face {
+    font-family: "Roboto-Thin";
+    src: url("fonts/Roboto-Thin.woff");
+  }
+  .grid {
+    display: grid;
+  }
+  @mixin br($rad) {
+    -webkit-border-radius: $rad;
+    -moz-border-radius: $rad;
+    -ms-border-radius: $rad;
+    border-radius: $rad;
+  }
+  

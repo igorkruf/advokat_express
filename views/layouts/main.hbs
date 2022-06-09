@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title></title>
+       <link rel="stylesheet" type="text/css" href="style/style.css"/>
+       <script src="scripts/script.js"></script>
+	</head>
+	<body class="grid">
+		<header class="header grid">
+             {{>header/hamburgermenu}}
+			{{>header/logotip}}
+            <div class="hc grid">{{>header/contact}}</div>
+		</header>
+		<main class="main grid">
+			{{{body}}}
+		</main>
+		<footer class="footer">
+			{{>header/contact}}
+		</footer>
+		<nav class="navmenu">
+			{{>main/menu}}
+		</nav>
+	</body>
+</html>

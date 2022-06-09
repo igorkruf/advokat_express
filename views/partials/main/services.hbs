@@ -1,0 +1,14 @@
+ {{#each services}}
+   
+    <section class="service">
+<article class="service__type">
+    {{type}}
+    </article>
+    {{#each name}}
+    <article class="service__name">
+    {{.}}
+    </article>
+    {{/each}}
+    </section>
+    
+    {{/each}}
